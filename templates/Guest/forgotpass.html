@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% load static %}
+<!-- Designined by CodingLab - youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title>Forgot Password</title>
+    <link rel="stylesheet" href="{% static 'Author/style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="background-image: url('{% static 'User/bg.jpg' %}'); background-size: cover; background-position: center;">
+<div class="container">
+    <div class="title"> Create New Password</div>
+    <div class="content">
+        <form action="{% url 'forgotpass' %}" method="post">
+            {% csrf_token %}
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">Email</span>
+                    <input type="email" placeholder="Enter your Email address"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                           title="must enter a valid email address"
+                           id="usermail" name="usermail" required>
+                </div>
+                <div class="input-box">
+
+                </div>
+
+
+                <div class="input-box">
+                    <span class="details">Password</span>
+                    <input type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                           title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                           placeholder="Enter your new password" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Confirm Password</span>
+                    <input type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                           title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                           placeholder="Re-enter the password" id="newpass" name="newpass" required>
+                </div>
+
+
+            </div>
+
+            <div class="button">
+                <input type="submit" value="Create">
+            </div>
+            <a href="{% url 'index1' %}">
+                <div class="button">
+                    <input type="button" value="Back">
+                </div>
+            </a>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

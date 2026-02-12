@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% load static %}
+<!-- Designined by CodingLab - youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title>User-Registration</title>
+    <link rel="stylesheet" href="{% static 'Author/style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="background-image: url('{% static 'User/bg.jpg' %}'); background-size: cover; background-position: center;">
+<div class="container">
+    <div class="title">User Registration</div>
+    <div class="content">
+        <form action="{% url 'userreg' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">Name</span>
+                    <input type="text" pattern="^[A-Za_z][A-Za-z -]+$" title="Must start with capital letter followed by upper or lowercase letters" placeholder="Enter your name" name="u_name" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Contact</span>
+                    <input type="text" pattern="[0-9]{10}" title="Must contain 10 digits" placeholder="Enter the Phone Number" name="u_ph" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">E-mail  </span>
+                    <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="must enter a valid email address" placeholder="Enter your E-mail id" name="u_mail" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Location</span>
+                    <select class="form-control" name="u_loc" style="
+                      width: 298px;
+                      height: 45px;
+                      ">
+                        <option>Location</option>
+
+                        {% for l in loc %}
+                        <option value="{{l.Locationid}}">{{l.LocationName}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="input-box">
+                    <span class="details">Username</span>
+                    <input type="text"  pattern="[a-z]{5,15}" title="Must contain minimum 4 and maximum 15 characters" placeholder="Enter the Username" name="u_usr" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Password</span>
+                    <input type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                           placeholder="Enter the Password" name="u_pass" required>
+                </div>
+            </div>
+
+            <div class="button">
+                <input type="submit" value="Register">
+            </div>
+            <a href="{% url 'index1' %}">
+                <div class="button">
+                    <input type="button" value="Back">
+                </div>
+            </a>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

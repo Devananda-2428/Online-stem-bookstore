@@ -96,7 +96,7 @@ To develop a secure and user-friendly online platform that:
 ![Admin Dashboard](screenshots/admin.png)
 
 ### UserPage
-![Book Purchase](screenshots/userpage.png)
+![Book Purchase](screenshots/user.png)
 
 
 

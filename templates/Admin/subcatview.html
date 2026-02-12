@@ -1,0 +1,52 @@
+{% load static %}
+{% include "Admin/header.html" %}
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-lg-10 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">SUB-CATEGORY VIEW</h4>
+<!--                        <p class="card-description">-->
+<!--                            Add class <code>.table</code>-->
+<!--                        </p>-->
+                      <br>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>Category Id</th>
+                                    <th>Category Name</th>
+
+                                    <th>Edit</th>
+                                    <th>Delete</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for s in subcategory %}
+                                <tr>
+                                    <td>{{forloop.counter}}</td>
+                                    <td>{{s.subname}}</td>
+
+                                    <th>
+                                <button type="submit"
+                                        onclick="window.location.href='{% url 'subcatedit' id=s.subid %}'"
+                                        class="btn btn-primary mr-2">Edit
+                                </button>
+                                    <th>
+                                <button type="submit"
+                                        onclick="window.location.href='{% url 'subcatdelete' id=s.subid %}'"
+                                        class="btn btn-danger mr-2">Delete
+                                </button>
+                            </th>
+
+                            </th>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% include "Admin/footer.html" %}

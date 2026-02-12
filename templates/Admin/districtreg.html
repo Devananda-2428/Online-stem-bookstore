@@ -1,0 +1,33 @@
+{% load static %}
+{% include "Admin/header.html" %}
+<div class="main-panel" style="background: url('{% static 'Admin/bgr9.jpg' %}') center/cover;">
+<div class="content-wrapper">
+    <div class="row">
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">DISTRICT REGISTRATION</h4>
+                <br>
+                <br>
+                <form class="forms-sample" action="{% url 'districtreg' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label"><b>District Name</b></label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="distname" name="distname"
+                                   placeholder="Enter District Name">
+                        </div>
+                    </div>
+
+                    <button type=" submit" class="btn btn-primary mr-2">Register</button>
+                            <input type="reset" class="btn btn-light" value="Cancel">
+
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <!-- content-wrapper ends -->
+ {% include "Admin/footer.html" %}
+

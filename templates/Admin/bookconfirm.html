@@ -1,0 +1,53 @@
+{% load static %}
+{% include "Admin/header.html" %}
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">NEW BOOK REGISTRATIONS</h4>
+
+                        <br>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>Book Id</th>
+                                    <th>Book</th>
+                                    <th>Book Name</th>
+                                    <th>ISBN</th>
+                                    <th>Author</th>
+                                    <th>Category</th>
+                                    <th>Action</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for b in books  %}
+
+                                <tr>
+                                    <td>{{forloop.counter}}</td>
+                                    <td><img src="/Images/{{b.Bookcover}}"
+                                             style="width: 100px;height: 69px;border-radius:10px !important" width="10" height="10"></td>
+                                    <td>{{b.Bookname}}</td>
+                                    <td>{{b.Bookisbn}}</td>
+                                    <td>{{b.Authorid.Authorname}}</td>
+                                    <td>{{b.Categoryid.Categoryname}}</td>
+                                    <th>
+                                        <button type="submit"
+                                                onclick="window.location.href='{% url 'bookconfirmation' id=b.Bookid %}'"
+                                                class="btn btn-primary mr-2">Confirm
+                                        </button>
+
+
+                                    </th>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% include "Admin/footer.html" %}

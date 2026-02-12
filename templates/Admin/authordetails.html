@@ -1,0 +1,61 @@
+{% load static %}
+{% include "Admin/header.html" %}
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">AUTHORS</h4>
+
+                        <br>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                <tr>
+
+                                    <th>Author Id</th>
+                                    <th>Author</th>
+                                    <th>Author Name</th>
+                                    <th>Contact</th>
+                                    <th>Email</th>
+
+                                    <th>Books</th>
+                                    <th>Action</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for a in auth %}
+
+                                <tr>
+
+                                  <td> {{a.Authorid}}</td>
+                                    <td><img src="/Images/{{a.Authorimg}}"
+                                             style="width: 100px;height: 69px;border-radius:10px !important"></td>
+                                    <td>{{a.Authorname}}</td>
+                                    <td>{{a.Authorcontact}}</td>
+                                    <td>{{a.Authoremail}}</td>
+
+                                    <th>
+                                        <button type="submit"
+                                                onclick="window.location.href='{% url 'authorbooks' id=a.Authorid %}'"
+                                                class="btn btn-primary mr-2">VIEW
+                                        </button>
+                                        <th>
+                                        <button type="submit"
+                                                onclick="window.location.href='{% url 'authordel' id=a.Authorid %}'"
+                                                class="btn btn-danger mr-2">DELETE
+                                        </button>
+                                        </th>
+
+                                    </th>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% include "Admin/footer.html" %}

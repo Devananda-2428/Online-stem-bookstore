@@ -1,0 +1,86 @@
+{% load static %}
+{% include "Admin/header.html" %}
+<script src="{% static '/jquery.min.js' %}"></script>
+
+<script>
+    $(document).ready(function()
+    {
+        $.ajaxSetup({
+            headers: {"X-CSRFToken" : '{{csrf_token}}'}
+        });
+        $('#district').change(function()
+        {
+            var district=$(this).val();
+            alert(district)
+            $.ajax({
+                type:"POST",
+                url:'{% url "locationbyid" %}',
+                data:{did:district},
+                dataType:"json",
+                success:function(data)
+                {
+                    $('#location').empty();
+                    i=1
+                    $.each(data,function(key,val){
+                    var id=val.Locationid;
+                    var EditUrl = '{% url "locationedit" 0 %}'.replace('0', id);
+                    var DeleteUrl = '{% url "locationdelete" 0 %}'.replace('0', id);
+                    var row='<tr class="table-info">'+
+                    '<td>'+ i++ +'</td>'+
+                    '<td>'+val.LocationName+'</td>'+
+                    '<td><a href="'+ EditUrl +'"><button type="submit"class="btn btn-primary mr-2">Edit</button></a></td>'+
+                    '<td><a href="'+ DeleteUrl +'"><button type="submit"class="btn btn-danger mr-2">Delete</button></a></td>'+
+                    '</tr>';
+                    $('#location').append(row);
+                    });
+                }
+            });
+        });
+    });
+
+
+</script>
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-lg-10 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">LOCATION VIEW</h4>
+
+                        <br>
+
+                            <div class="form-group row">
+
+                                <label class="col-sm-3 col-form-label"><b>DISTRICT</b></label>
+
+                                <div class="col-sm-6">
+                                    <select class="form-control" name="Districtid" id="district">
+                                        <option value="" selected disabled>Select District</option>
+                                        {% for dist in district %}
+                                        <option value="{{ dist.DistrictId }}">{{ dist.DistrictName }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>Location ID</th>
+                                        <th>Location Name</th>
+                                        <th>Edit </th>
+                                        <th>Delete</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="location">
+
+
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% include "Admin/footer.html" %}

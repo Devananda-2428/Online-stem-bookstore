@@ -1,0 +1,37 @@
+{% load static %}
+{% include "Admin/header.html" %}
+<div class="main-panel">
+
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">CATEGORY EDIT</h4>
+                <br>
+                <br>
+                <form class="forms-sample" action="{% url 'categoryedit' cat.Categoryid  %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Category Name</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" value="{{cat.Categoryname}}"  id="Category" name="Category"
+                                   placeholder="Category Name">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Category Image</label>
+                        <div class="col-sm-9">
+                            <input type="hidden" name="Catimage" value="{{cat.Categoryimg}}">
+                            <input type="file" class="form-control"  name="Categoryimage">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Confirm</button>
+                            <input type="reset" class="btn btn-light" value="Cancel">
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- content-wrapper ends -->
+    {% include "Admin/footer.html" %}
+
+</div>

@@ -1,0 +1,41 @@
+{% load static %}
+{% include "Admin/header.html" %}
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-lg-10 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Sales</h4>
+
+                        <br>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>Sales Id</th>
+                                    <th>Sales Date</th>
+                                    <th>Book</th>
+                                    <th>Author</th>
+                                    <th>Sales mode</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for s in sales %}
+                                <tr>
+                                    <td>{{s.Bookingid}}</td>
+                                    <td>{{s.Masterid.Date}}</td>
+                                    <td>{{s.Bookid.Bookname}}</td>
+                                    <td>{{s.Authorid.Authorname}}</td>
+                                    <td>{{s.Masterid.status}}</td>
+
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% include "Admin/footer.html" %}

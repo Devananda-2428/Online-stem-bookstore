@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load static %}
+<!-- Designined by CodingLab - youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title>Books</title>
+    <link rel="stylesheet" href="{% static 'Author/style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="background-image: url('{% static 'User/bg2.jpg' %}'); background-size: cover; background-position: center;">
+<div class="container">
+    <div class="title">Details</div>
+    <div class="content">
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">Book Id</span>
+                    <input type="text" value="{{Books.Bookid}}" readonly>
+                </div>
+                <div class="input-box">
+                    <span class="details">Book</span>
+                    <input type="text" value="{{Books.Bookname}}" readonly>
+                </div>
+                <div class="input-box">
+                    <span class="details">Year Of Publishing</span>
+                    <input type="text" value="{{Books.Bookyear}}" readonly>
+                </div>
+                <div class="input-box">
+                    <span class="details">ISBN</span>
+                    <input type="text" value="{{Books.Bookisbn}}" readonly>
+                </div>
+                <div class="input-box">
+                    <span class="details">Price</span>
+                    <input type="text" value="Rs.{{Books.Bookprice}}" readonly>
+                </div>
+                <div class="input-box">
+                    <span class="details">Category</span>
+                    <input type="text" value="{{Books.Categoryid.Categoryname}}" readonly>
+                </div>
+
+
+            </div>
+
+
+            <div class="button">
+                <a href="{% url 'adminhome' %}">
+                <input type="button" value="Back">
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

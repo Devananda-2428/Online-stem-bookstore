@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="zxx" class="no-js">
+<head>
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="{% static 'User/img/fav.png' %}">
+    <!-- Author Meta -->
+    <meta name="author" content="codepixer">
+    <!-- Meta Description -->
+    <meta name="description" content="">
+    <!-- Meta Keyword -->
+    <meta name="keywords" content="">
+    <!-- meta character set -->
+    <meta charset="UTF-8">
+    <!-- Site Title -->
+    <title>Book</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+    <!--
+    CSS
+    ============================================= -->
+    <link rel="stylesheet" href="{% static 'User/css/linearicons.css' %}">
+    <link rel="stylesheet" href="{% static 'User/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'User/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'User/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'User/css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'User/css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'User/css/owl.carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'User/css/main.css' %}">
+</head>
+<body>
+
+<header id="header" id="home">
+    <div class="container">
+        <div class="row align-items-center justify-content-between d-flex">
+            <div id="logo">
+                <a href="{% static 'User/index.html' %}"><h2 style="color:blue;">InkFinity</h2></a>
+            </div>
+            <nav id="nav-menu-container">
+                <ul class="nav-menu">
+                    <li class="menu-active"><a href="#home">Home</a></li>
+                    <li><a href="#course">Category</a></li>
+                    <li><a href="{% url 'orders' %}">My Orders</a></li>
+
+                    <li><a href="{% url 'userlogout' %}">Logout</a></li>
+
+
+                </ul>
+            </nav><!-- #nav-menu-container -->
+        </div>
+    </div>
+</header>
+<!-- start banner Area -->
+<section class="banner-area" id="home">
+    <div class="container">
+        <div class="row fullscreen d-flex align-items-center justify-content-start">
+            <div class="banner-content col-lg-7">
+                <h5 class="text-white text-uppercase">An Investment in</h5>
+                <h1 class="text-uppercase">
+                    Knowledge
+                </h1>
+                <p class="text-white pt-20 pb-20">
+                    ALWAYS PAYS THE BEST INTEREST....
+                </p>
+                <a href="#" class="primary-btn text-uppercase">-Ben Franklin</a>
+            </div>
+            <div class="col-lg-5 banner-right">
+                <img class="img-fluid" src="{% static 'User/img/header-img.png' %}" alt="">
+            </div>
+        </div>
+    </div>
+</section><!-- #header -->

@@ -1,0 +1,222 @@
+{% load static %}
+{% include 'User/header.html' %}
+
+<style>
+    .imgs-fluid {
+            width: 150px; /* Adjust the image width as needed */
+            height: 300px; /* Adjust the image height as needed */
+            border-radius: 0%;/* Create a circular image, adjust as needed */
+        }
+         .orange-button {
+            background-color: #ff5733; /* A shade of red */
+            color: white;
+            padding: 1px 40px;
+            border: none;
+            border-radius: 20px; /* Adjust the radius as needed */
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+
+
+</style>
+<!-- Start course Area -->
+<section class="course-area section-gap" id="course">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content pb-60 col-lg-9">
+                <div class="title text-center">
+                    <h1 class="mb-10">FOUR SUBJECTS WE OFFER</h1>
+                    <br>
+                    <p>
+                    <h3>Choose Your Category</h3></p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="active-course-carusel">
+                {% for ch in category %}
+                <div class="single-course item">
+                    <img class="imgs-fluid" src="/Images/{{ch.Categoryimg}}" alt="">
+
+                    <div class="details" style="text-align:center;">
+                        <a href="{% url 'science' id=ch.Categoryid %}">
+                            <button class="orange-button">
+                                <h4>{{ ch.Categoryname }}</h4>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End course Area -->
+
+<!-- Start call-to-action Area -->
+<section class="call-to-action-area section-gap">
+    <div class="container">
+        <div class="row justify-content-center top">
+            <div class="col-lg-12">
+                <h1 class="text-white text-center">SELL MY BOOK!!</h1>
+                <p class="text-white text-center mt-30">
+                    This provision in place facilitates the sale of secondhand books that the users currently have in their possession.<br>
+                    Please be aware that the book will only be made available for sale after a confirmation process.
+                </p>
+            </div>
+        </div>
+        <div class="row justify-content-center d-flex">
+            <div class="download-button d-flex flex-row justify-content-center mt-30">
+                <div class="buttons flex-row d-flex">
+<!--                    <i class="fa fa-apple" aria-hidden="true"></i>-->
+                    <div class="desc">
+                        <a href="{% url 'secbookreg' %}">
+                            <p>
+                                <span>Registration</span> <br>
+
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="buttons flex-row d-flex">
+<!--                    <i class="fa fa-android" aria-hidden="true"></i>-->
+                    <div class="desc">
+                        <a href="{% url 'secbookview' %}">
+                            <p>
+                                <span>View Requests</span> <br>
+
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End call-to-action Area -->
+
+<!-- Start testomial Area -->
+<section class="testomial-area section-gap">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content pb-60 col-lg-8">
+                <div class="title text-center">
+                    <h1 class="mb-10">What our Reader’s Say about us</h1>
+                    <p>Who are in extremely love with eco friendly system.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="active-tstimonial-carusel">
+                <div class="single-testimonial item">
+                    <img class="mx-auto" src="{% static 'User/img/t1.png' %}" alt="">
+                    <p class="desc">
+                        Accessories Here you can find the best computer accessory for your laptop, monitor, printer,
+                        scanner, speaker, projector, hardware and more. laptop accessory
+                    </p>
+                    <h4>Mark Alviro Wiens</h4>
+                    <p>
+                        CEO at Google
+                    </p>
+                </div>
+                <div class="single-testimonial item">
+                    <img class="mx-auto" src="{% static 'User/img/t2.png' %}" alt="">
+                    <p class="desc">
+                        Accessories Here you can find the best computer accessory for your laptop, monitor, printer,
+                        scanner, speaker, projector, hardware and more. laptop accessory
+                    </p>
+                    <h4>Mark Alviro Wiens</h4>
+                    <p>
+                        CEO at Google
+                    </p>
+                </div>
+                <div class="single-testimonial item">
+                    <img class="mx-auto" src="{% static 'User/img/t3.png' %}" alt="">
+                    <p class="desc">
+                        Accessories Here you can find the best computer accessory for your laptop, monitor, printer,
+                        scanner, speaker, projector, hardware and more. laptop accessory
+                    </p>
+                    <h4>Mark Alviro Wiens</h4>
+                    <p>
+                        CEO at Google
+                    </p>
+                </div>
+                <div class="single-testimonial item">
+                    <img class="mx-auto" src="{% static 'User/img/t1.png' %}" alt="">
+                    <p class="desc">
+                        Accessories Here you can find the best computer accessory for your laptop, monitor, printer,
+                        scanner, speaker, projector, hardware and more. laptop accessory
+                    </p>
+                    <h4>Mark Alviro Wiens</h4>
+                    <p>
+                        CEO at Google
+                    </p>
+                </div>
+                <div class="single-testimonial item">
+                    <img class="mx-auto" src="{% static 'User/img/t2.png' %}" alt="">
+                    <p class="desc">
+                        Accessories Here you can find the best computer accessory for your laptop, monitor, printer,
+                        scanner, speaker, projector, hardware and more. laptop accessory
+                    </p>
+                    <h4>Mark Alviro Wiens</h4>
+                    <p>
+                        CEO at Google
+                    </p>
+                </div>
+                <div class="single-testimonial item">
+                    <img class="mx-auto" src="{% static 'User/img/t3.png' %}" alt="">
+                    <p class="desc">
+                        Accessories Here you can find the best computer accessory for your laptop, monitor, printer,
+                        scanner, speaker, projector, hardware and more. laptop accessory
+                    </p>
+                    <h4>Mark Alviro Wiens</h4>
+                    <p>
+                        CEO at Google
+                    </p>
+                </div>
+                <div class="single-testimonial item">
+                    <img class="mx-auto" src="{% static 'User/img/t1.png' %}" alt="">
+                    <p class="desc">
+                        Accessories Here you can find the best computer accessory for your laptop, monitor, printer,
+                        scanner, speaker, projector, hardware and more. laptop accessory
+                    </p>
+                    <h4>Mark Alviro Wiens</h4>
+                    <p>
+                        CEO at Google
+                    </p>
+                </div>
+                <div class="single-testimonial item">
+                    <img class="mx-auto" src="{% static 'User/img/t2.png' %}" alt="">
+                    <p class="desc">
+                        Accessories Here you can find the best computer accessory for your laptop, monitor, printer,
+                        scanner, speaker, projector, hardware and more. laptop accessory
+                    </p>
+                    <h4>Mark Alviro Wiens</h4>
+                    <p>
+                        CEO at Google
+                    </p>
+                </div>
+                <div class="single-testimonial item">
+                    <img class="mx-auto" src="{% static 'User/img/t3.png' %}" alt="">
+                    <p class="desc">
+                        Accessories Here you can find the best computer accessory for your laptop, monitor, printer,
+                        scanner, speaker, projector, hardware and more. laptop accessory
+                    </p>
+                    <h4>Mark Alviro Wiens</h4>
+                    <p>
+                        CEO at Google
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End testomial Area -->
+
+{% include 'User/footer.html' %}
+<!-- start footer Area -->

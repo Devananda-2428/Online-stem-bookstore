@@ -1,0 +1,82 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+    <title>Orders</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="{% static 'User/table/css/style.css' %}">
+
+    <style>
+    .orange-button {
+            background-color:blue ;
+            color: white;
+            padding: 10px 10px;
+            border: none;
+            border-radius: 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+        }
+</head>
+</style>
+<a href="{% url 'index' %}">
+    <button class="orange-button">
+        Back
+    </button>
+</a>
+<body style="background-image: url('{% static 'User/bg.jpg' %}'); background-size: cover; background-position: center;">
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center mb-5">
+                <h2 class="heading-section" style="color:yellow;">My Orders</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="table-wrap">
+                    <table class="table">
+                        <thead class="thead-primary">
+                        <tr>
+                            <th>Booking Date</th>
+                            <th>Mode</th>
+                            <th>Invoice</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for u in details %}
+                        <tr>
+                            <td>{{u.Masterid.Date}}</td>
+                            <td>{{u.Masterid.status}}</td>
+
+                            <td><a href="{% url 'invoice' id=u.Bookingid %} " class="btn btn-primary">Get Invoice</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="{% static 'User/table/js/jquery.min.js' %}"></script>
+<script src="{% static 'User/table/js/popper.js' %}"></script>
+<script src="{% static 'User/table/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'User/table/js/main.js' %}"></script>
+
+</body>
+</html>
+

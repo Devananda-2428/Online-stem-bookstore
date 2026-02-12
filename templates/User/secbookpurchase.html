@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% load static %}
+<!-- Designined by CodingLab - youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title> Responsive Registration Form | CodingLab </title>
+    <link rel="stylesheet" href="{% static 'Author/style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="background-image: url('{% static 'User/bg.jpg' %}'); background-size: cover; background-position: center;">
+<div class="container">
+    <div class="title">Place My Order</div>
+    <div class="content">
+        <form action="{% url 'secbookconfirm' id=data.Secbookid %}" method="post">
+            {% csrf_token %}
+            <div class="user-details">
+
+                <div class="input-box">
+                    <span class="details">Date</span>
+                    <input type="" value="{{date}}" readonly>
+                </div>
+                <div class="input-box">
+                    <span class="details">Book Name</span>
+                    <input type="text" value="{{data.secbookname}}" readonly>
+                </div>
+                <div class="input-box">
+                    <span class="details">Price</span>
+                    <input type="text" value="Rs.{{data.secbookprice}}"  readonly>
+                </div>
+
+
+            </div>
+
+            <div class="button">
+
+                <input type="submit" value="Confirm request">
+
+            </div>
+            <div class="button">
+                <input type="submit" value="Back">
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% load static %}
+<!-- Designined by CodingLab - youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title> Responsive Registration Form | CodingLab </title>
+    <link rel="stylesheet" href="{% static 'Author/style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="background-image: url('{% static 'User/bg.jpg' %}'); background-size: cover; background-position: center;">
+<div class="container">
+    <div class="title">Place My Order</div>
+    <div class="content">
+        <form action="{% url 'hcopy' id=books.Bookid %}" method="post">
+            {% csrf_token %}
+            <div class="user-details">
+
+                <div class="input-box">
+                    <span class="details">Date</span>
+                    <input type="" value="{{current_date}}" readonly>
+                </div>
+                <div class="input-box">
+                    <span class="details">Book Name</span>
+                    <input type="text" value="{{books.Bookname}}" readonly>
+                </div>
+                <div class="input-box">
+                    <span class="details">Price</span>
+                    <input type="text" value="Rs.{{books.Bookprice}}" id="hcprice" readonly>
+                </div>
+                <div class="input-box">
+                    <span class="details">Address*</span>
+                    <input type="text" id="address" name="address" required>
+                </div>
+
+
+            </div>
+
+            <div class="button">
+
+                <input type="submit" value="Proceed">
+                </a>
+            </div>
+            <a href="{% url 'index' %}">
+                <div class="button">
+                    <input type="button" value="Cancel">
+                </div>
+            </a>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

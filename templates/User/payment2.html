@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment</title>
+    <link rel="stylesheet" href="{% static 'User/./style1.css' %}">
+
+</head>
+<body style="background-image: url('{% static 'User/bg.jpg' %}'); background-size: cover; background-position: center;">
+<!-- partial:index.partial.html -->
+<div class="mainscreen">
+    <!-- <img src="https://image.freepik.com/free-vector/purple-background-with-neon-frame_52683-34124.jpg"  class="bgimg " alt="">-->
+    <div class="card">
+        <div class="leftside">
+            <img
+                    src="{% static 'User/bg.jpg' %}"
+                    class="product"
+            />
+        </div>
+        <div class="rightside">
+            <form action="{% url 'paymentpage' id=books %}" method="post">
+                {% csrf_token %}
+                <h1>CheckOut</h1>
+                <h2>Payment Information</h2>
+                <p>Cardholder Name</p>
+                <input type="text"  pattern="^[A-Za_z][A-Za-z -]+$" title="Must start with capital letter followed by upper or lowercase letters"
+                       class="inputbox" name="card_name" id="card_name" required/>
+                <p>Card Number</p>
+                <input type="text" pattern="[0-9]{10}"  title="Must contain 10 digits" class="inputbox" name="card_number" id="card_number" required/>
+
+                <p>Card Type</p>
+                <select class="inputbox" name="card_type" id="card_type" required>
+                    <option value="">--Select a Card Type--</option>
+                    <option value="Visa">Visa</option>
+                    <option value="RuPay">RuPay</option>
+                    <option value="MasterCard">MasterCard</option>
+                </select>
+                <div class="expcvv">
+
+                    <p class="expcvv_text">Expiry</p>
+                    <input type="date" class="inputbox" name="exp_date" id="exp_date" required/>
+
+                    <p class="expcvv_text2">CVV</p>
+                    <input type="password" pattern="[0-9]{3}" title="Must contain 3 digits" class="inputbox" name="cvv" id="cvv" required/>
+                </div>
+                <p></p>
+                <button type="submit" class="button">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- partial -->
+
+</body>
+</html>

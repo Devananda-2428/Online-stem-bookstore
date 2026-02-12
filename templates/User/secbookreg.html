@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+{% load static %}
+<!-- Designined by CodingLab - youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title>Second-Hand Registration</title>
+    <link rel="stylesheet" href="{% static 'User/style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="background-image: url('{% static 'User/sec1.jpg' %}'); background-size: cover; background-position: center;">
+
+<div class="container">
+    <div class="title">Book Registration</div>
+    <div class="content">
+        <form action="{% url 'secbookreg' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">Book Name</span>
+                    <input type="text" placeholder="Enter the book name" name="sb_name" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Author Name</span>
+                    <input type="text" pattern="^[A-Za_z][A-Za-z -]+$" title="Must start with capital letter followed by upper or lowercase letters" placeholder="Enter name of the Author" name="sb_aname" required>
+                </div>
+
+                <div class="input-box">
+                    <span class="details">Original Price</span>
+
+                    <input type="text" placeholder="Enter the original book price" name="sbo_price"  required >
+
+                </div>
+                <div class="input-box">
+                    <span class="details">Selling Price</span>
+                    <input type="text" placeholder="Enter the selling price" name="sb_price"   required>
+
+                </div>
+                <div class="input-box">
+                    <span class="details">Photo</span>
+                    <input type="file" placeholder="" name="secbookimage" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Language</span>
+                    <select class="form-control" name="sb_lang" style="
+    width: 298px;
+    height: 45px;
+">
+                        <option>Language</option>
+
+                        {% for l in lanuages %}
+                        <option value="{{l.Langid}}">{{l.LangName}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="input-box">
+                    <span class="details">Category</span>
+
+                    <select class="form-control" name="sb_cat" style="
+    width: 298px;
+    height: 45px;
+">
+                        <option>Category</option>
+
+                        {% for c in categories %}
+                        <option value="{{c.Categoryid}}">{{c.Categoryname}}</option>
+                        {% endfor %}
+                    </select>
+
+                </div>
+                <div class="input-box">
+                    <span class="details">Book Type</span>
+
+                    <select class="form-control" name="sb_subcat" style="
+    width: 298px;
+    height: 45px;
+">
+                        <option>Type</option>
+
+                        {% for s in subcategory %}
+                        <option value="{{s.subid}}">{{s.subname}}</option>
+                        {% endfor %}
+                    </select>
+
+                </div>
+
+
+            </div>
+
+            <div class="button">
+                <input type="submit" value="Register">
+            </div>
+            <a href="{% url 'index' %}"><div class="button" >
+                <input type="button" value="Back" >
+            </div></a>
+
+        </form>
+    </div>
+</div>
+<script src="{% static '/jquery.min.js' %}"></script>
+<script>
+    $(document).ready(function () {
+        // Your JavaScript code here
+        // You can use AJAX to send the form data to the server without refreshing the page
+        $('#secbookreg').submit(function (e) {
+            e.preventDefault();  // Prevent the default form submission
+
+            // Get the form data
+            var formData = $(this).serialize();
+
+            // Send an AJAX request
+            $.ajax({
+                type: "POST",
+                url: '{% url "secbookreg" %}',
+                data: formData,
+                success: function (response) {
+                    // Check the response and display an alert if needed
+                    if (response.error) {
+
+                        window.location = "/user/secbookreg";
+                    } else {
+                        // Redirect or perform other actions as needed
+                        window.location = "/user/secbookreg";
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

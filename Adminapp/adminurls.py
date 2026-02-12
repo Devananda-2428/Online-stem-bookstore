@@ -1,0 +1,38 @@
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('adminhome/',views.adminhome,name="adminhome"),
+    path('formview/',views.formview,name="formview"),
+    path('districtreg/',views.district,name="districtreg"),
+    path('locationreg/',views.locationreg,name="locationreg"),
+    path('Categoryreg/',views.Categoryreg,name="Categoryreg"),
+    path('subcategoryreg/',views.subcategoryreg,name="subcategoryreg"),
+    path('districtview/',views.districtview,name="districtview"),
+    path('locationview/',views.locationview,name="locationview"),
+    path('location/',views.locationbyid,name="locationbyid"),
+    path('locationedit/<int:id>',views.locationedit,name="locationedit"),
+    path('locationdelete/<int:id>',views.locationdelete,name="locationdelete"),
+    path('categoryview/',views.categoryview,name="categoryview"),
+    path('categoryedit/<int:id>',views.categoryedit,name="categoryedit"),
+    path('categorydelete/<int:id>',views.categorydelete,name="categorydelete"),
+    path('subcatview/',views.subcatview,name="subcatview"),
+    path('subcatedit/<int:id>',views.subcatedit,name="subcatedit"),
+    path('subcatdelete/<int:id>',views.subcatdelete,name="subcatdelete"),
+    path('authorconfirm/',views.authorconfirm,name="authorconfirm"),
+    path('confirm/<int:id>',views.confirm,name="confirm"),
+    path('bookconfirm/',views.bookconfirm,name="bookconfirm"),
+    path('bookconfirmation/<int:id>',views.bookconfirmation,name="bookconfirmation"),
+    path('secbookconfirm/',views.secbookconfirm,name="secbookconfirm"),
+    path('secbookconfirmation/<int:id>',views.secbookconfirmation,name="secbookconfirmation"),
+    path('authordetails/',views.authordetails,name="authordetails"),
+    path('authorbooks/<int:id>',views.authorbooks,name="authorbooks"),
+    path('userdetails/',views.userdetails,name="userdetails"),
+    path('bookdetails/<int:id>',views.bookdetails,name="bookdetails"),
+    path('salesview/',views.salesview,name="salesview"),
+    path('adminchangepass/',views.adminchangepass,name="adminchangepass"),
+    path('adminlogout/',views.adminlogout,name="adminlogout"),
+    path('districtdelete/<int:id>',views.districtdelete,name="districtdelete"),
+    path('districtedit/<int:id>',views.districtedit,name="districtedit"),
+    path('authordel/<int:id>',views.authordel,name="authordel")
+]

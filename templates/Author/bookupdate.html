@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% load static %}
+<!-- Designined by CodingLab - youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title>Update-Books</title>
+    <link rel="stylesheet" href="{% static 'Author/style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="background-image: url('{% static 'User/bg.jpg' %}'); background-size: cover; background-position: center;">
+<div class="container">
+    <div class="title">Update</div>
+    <div class="content">
+        <form action="{% url 'update' id=d1.Bookid %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">Book</span>
+                    <input type="text" value="{{d1.Bookname}}" readonly>
+                </div>
+                <div class="input-box">
+
+                </div>
+
+
+                <div class="input-box">
+                    <span class="details">Current Price</span>
+                    <input type="text" value="{{d1.Bookprice}}" readonly>
+                </div>
+                <div class="input-box">
+                    <span class="details">Updated Price</span>
+                    <input type="text" placeholder="Enter the New Price" name="new_price" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Current Copies</span>
+                    <input type="text" value="{{d1.Bookstock}}" readonly>
+                </div>
+                <div class="input-box">
+                    <span class="details">Updated Copies</span>
+                    <input type="text" placeholder="Enter the New Number" name="new_stock" required>
+                </div>
+            </div>
+
+            <div class="button">
+                <input type="submit" value="Update">
+            </div>
+             <a href="{% url 'authorhome' %}"><div class="button" >
+                <input type="button" value="Back" >
+            </div></a>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

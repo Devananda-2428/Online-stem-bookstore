@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+{% load static %}
+<!-- Designined by CodingLab - youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title>Book-Registration</title>
+    <link rel="stylesheet" href="{% static 'Author/style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="background-image: url('{% static 'User/bg.jpg' %}'); background-size: cover; background-position: center;">
+<div class="container">
+    <div class="title">Register My Books</div>
+    <div class="content">
+        <form action="{% url 'bookreg' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">Book Name</span>
+                    <input type="text" placeholder="Enter the book name" name="b_name" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">ISBN</span>
+                    <input type="text" pattern="[0-9]{10}|[0-9]{13}"  title="Must be a valid 10 or 13 digit ISBN" placeholder="Enter the number" name="b_num" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Year Of Publishing</span>
+                    <input type="date" placeholder="Enter the year" name="b_year" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Price</span>
+                    <input type="text" placeholder="Enter the book price" name="b_price" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Language</span>
+                    <select class="form-control" name="b_lang" style="
+    width: 298px;
+    height: 45px;">
+                        <option>Language</option>
+
+                        {% for l in lanuages %}
+                        <option value="{{l.Langid}}">{{l.LangName}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="input-box">
+                    <span class="details">Category</span>
+
+                    <select class="form-control" name="b_cat" style="
+    width: 298px;
+    height: 45px;">
+                        <option>Category</option>
+
+                        {% for c in categories %}
+                        <option value="{{c.Categoryid}}">{{c.Categoryname}}</option>
+                        {% endfor %}
+                    </select>
+
+                </div>
+                <div class="input-box">
+                    <span class="details">Book Type</span>
+
+                    <select class="form-control" name="b_subcat" style="
+    width: 298px;
+    height: 45px;">
+                        <option>Type</option>
+
+                        {% for s in subcategory %}
+                        <option value="{{s.subid}}">{{s.subname}}</option>
+                        {% endfor %}
+                    </select>
+
+                </div>
+                <div class="input-box">
+                    <span class="details">Photo</span>
+                    <input type="file" placeholder="" name="bookimage" required>
+                </div>
+
+                <div class="input-box">
+                    <span class="details">Stock</span>
+                    <input type="text" placeholder="Enter the stock" name="b_stock" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Book File</span>
+                    <input type="file" placeholder="" name="bookfile" required>
+                </div>
+
+            </div>
+
+            <div class="button">
+                <input type="submit" value="Register">
+            </div>
+            <a href="{% url 'authorhome' %}"><div class="button" >
+                <input type="button" value="Back" >
+            </div></a>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

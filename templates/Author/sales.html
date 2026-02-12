@@ -1,0 +1,84 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+    <title>PrintCopy-Sale</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="{% static 'Author/table/css/style.css' %}">
+<style>
+ .blue-button {
+            background-color:blue ;
+            color: white;
+            padding: 10px 10px;
+            border: none;
+            border-radius: 20px; /* Adjust the radius as needed */
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+        }
+</style>
+</head>
+<a href="{% url 'authorhome' %}">
+    <button class="blue-button">
+        Back
+    </button>
+</a>
+<body style="background-image: url('{% static 'User/bg.jpg' %}'); background-size: cover; background-position: center;">
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center mb-5">
+                <h2 class="heading-section" style="color:yellow;">Sales</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="table-wrap">
+                    <table class="table">
+                        <thead class="thead-primary">
+                        <tr>
+                            <th>Sales Date</th>
+                            <th>Purchaser</th>
+                            <th>Address</th>
+                            <th>Location</th>
+                            <th>Invoice</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for k in details %}
+                        <tr>
+                            <td>{{k.Masterid.Date}}</td>
+                            <td>{{k.Userid.UserName}}</td>
+                            <td>{{k.Useraddress}}</td>
+                            <td>{{k.Userid.Locationid.LocationName}},{{k.Userid.Locationid.DistrictId.DistrictName}}</td>
+
+                            <td><a href="{% url 'authorinvoice' id=k.Bookingid %} " class="btn btn-primary">Get Invoice</a></td>
+                        </tr>
+
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="{% static 'Author/table/js/jquery.min.js' %}"></script>
+<script src="{% static 'Author/table/js/popper.js' %}"></script>
+<script src="{% static 'Author/table/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'Author/table/js/main.js' %}"></script>
+
+</body>
+</html>
+
